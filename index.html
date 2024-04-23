@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tienda de Ropa</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>
+        <header>
+            <div>
+                <h1>Sorella</h1>
+                <nav>
+                    <ul>
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#">Indumentaria</a></li>
+                        <li><a href="#">Calzado</a></li>
+                        <li><a href="#">Accesorios</a></li>
+                        <li><a href="#" id="carrito-link">Carrito<span id="numero-carrito">0</span></a></li>
+                    </ul>
+                </nav>
+            
+            </div>
+        
+        </header>
+    
+        <main id="productos" class="grid-container">
+            <!-- Aquí se mostrarán los productos -->
+        </main>
+    
+        <div id="carrito" class="hidden">
+             <button id="cerrar-carrito">Cerrar</button>
+             <h2>Carrito de Compras</h2>
+             <ul id="carrito-lista"></ul>
+             <p>Total a pagar: $<span id="total-pagar">0.00</span></p>
+             <button id="vaciar-carrito">Vaciar Carrito</button>
+             <button id="comprar">Comprar</button>
+         </div> 
+     
+        <div id="mensaje" class="mensaje hidden"></div>
+     
+        <footer>
+            <p>&copy; 2024 SORELLA</p>
+        </footer>
+    
+        <script src="main.js"></script>
+    </body>
+
+</html>

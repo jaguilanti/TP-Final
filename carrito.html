@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Carrito de Compras</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>
+
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a>Carrito <span id="cart-count">0</span></a>
+        </nav>
+
+        <h1>Carrito de Compras</h1>
+
+        <h2>Carrito Vacio</h2>
+        <ul id="carrito-lista"></ul>
+        <div id="carrito-productos" class="carrito-productos disabled">
+            <!-- Aquí se mostrarán los productos en el carrito -->
+        </div>
+        <p>Total a pagar: $<span id="total-pagar">0.00</span></p>
+        <button id="vaciar-carrito">Vaciar Carrito</button>
+        <button id="comprar">Comprar</button>
+
+
+        <div id="mensaje" class="mensaje hidden"></div>
+
+
+        <script src="./main.js"></script>
+    </body>
+
+</html>

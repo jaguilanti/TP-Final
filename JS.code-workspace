@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../Coder-House/Curso Java Script/JS"
+		},
+		{
+			"path": "../Ecommerce"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "JS"
+	}
+}
