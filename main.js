@@ -3,7 +3,7 @@ const productos = [
     {
         id: 1,
         nombre: "Camiseta",
-        categoria: "Ropa",
+        categoria: "Indumentaria",
         precio: 20,
         stock: 10,
         imagen: "./imagenes/outfits/7 ideas de outfits perfectos para ir a la playa en Semana Santa.png",
@@ -11,7 +11,7 @@ const productos = [
     {
         id: 2,
         nombre: "Pantalón",
-        categoria: "Ropa",
+        categoria: "Indumentaria",
         precio: 30,
         stock: 5,
         imagen: "./imagenes/outfits/des.jpg",
@@ -35,7 +35,7 @@ const productos = [
     {
         id: 5,
         nombre: "Camiseta",
-        categoria: "Ropa",
+        categoria: "Indumentaria",
         precio: 20,
         stock: 10,
         imagen: "./imagenes/outfits/7 ideas de outfits perfectos para ir a la playa en Semana Santa.png",
@@ -43,7 +43,7 @@ const productos = [
     {
         id: 6,
         nombre: "Pantalón",
-        categoria: "Ropa",
+        categoria: "Indumentaria",
         precio: 30,
         stock: 5,
         imagen: "./imagenes/outfits/des.jpg",
@@ -76,19 +76,21 @@ function actualizarNumeroCarrito() {
 }
 
 function calcularTotal() {
-    const total = carrito.reduce((acumulador, item) => {
-        const producto = productos.find(producto => producto.id === item.id);
-        return acumulador + (producto.precio * item.cantidad);
-    }, 0);
+    let total = 0;
+    for (const item of carrito) {
+        const index = productos.findIndex(producto => producto.id === item.id);
+        if (index !== -1) {
+            total += productos[index].precio * item.cantidad;
+        }
+    }
     return total.toFixed(2);
 }
+
 
 function mostrarProductos() {
     const main = document.getElementById("productos");
     main.innerHTML = "";
     productos.forEach(producto => {
-        /* const productoEnCarrito = carrito.find(item => item.id === producto.id);
-        const cantidadEnCarrito = productoEnCarrito ? productoEnCarrito.cantidad : 0; */
         const productoHTML = `
             <div class="producto">
                 <div class="contenedor-img"><img class="img-producto" src="${producto.imagen}" alt="${producto.nombre}"></div>
@@ -102,6 +104,7 @@ function mostrarProductos() {
         main.innerHTML += productoHTML;
     });
 }
+
 
 function mostrarCarrito() {
     const carritoElement = document.getElementById("carrito-lista");
@@ -133,8 +136,8 @@ function mostrarCarrito() {
     });
 
     // Mostrar el total a pagar
-    const totalPagarElement = document.getElementById("total-pagar");
-    totalPagarElement.textContent = calcularTotal();
+    const totalAPagar = document.getElementById("total-pagar");
+    totalAPagar.textContent = calcularTotal();
 }
 
 function mostrarMensaje(mensaje) {
@@ -188,6 +191,7 @@ function vaciarCarrito() {
     mostrarCarrito();
     actualizarNumeroCarrito();
     guardarLocalS();
+    mostrarMensaje("Listo, su carrito esta vacio");
 }
 
 function comprar() {
@@ -217,10 +221,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 function eliminarProducto(productId) {
-    carrito = carrito.filter(item => item.id !== productId);
+    carrito = carrito.filter(item => item.id !== productId);    
     mostrarCarrito();
     actualizarNumeroCarrito();
     guardarLocalS();
+    /* productos.find(item => item.nombre === productNombre); */
+    mostrarMensaje("El producto ha sido eliminado del carrito");
 }
 
 
@@ -236,6 +242,5 @@ function cargarCarritoDesdeLS() {
         actualizarNumeroCarrito();
     }
 }
-
 
 
