@@ -61,7 +61,7 @@ const productos = [
         nombre: "Aros",
         categoria: "Accesorios",
         precio: 25,
-        stock: 15,
+        stock: 0,
         imagen: "./imagenes/accesorios.png",
     }
 ];
@@ -107,6 +107,7 @@ function mostrarProductos() {
 
 
 function mostrarCarrito() {
+
     const carritoElement = document.getElementById("carrito-lista");
     carritoElement.innerHTML = `
         <li class="carrito-header">
@@ -117,7 +118,7 @@ function mostrarCarrito() {
             <span>Subtotal</span>
             <span class="titulo-boton-eliminar"></span>
         </li>
-    `;
+        `;
     carrito.forEach(item => {
         const productoEnCarrito = productos.find(producto => producto.id === item.id);
         const subtotal = productoEnCarrito.precio * item.cantidad;
@@ -138,7 +139,10 @@ function mostrarCarrito() {
     // Mostrar el total a pagar
     const totalAPagar = document.getElementById("total-pagar");
     totalAPagar.textContent = calcularTotal();
+
+
 }
+
 
 function mostrarMensaje(mensaje) {
     const mensajeDeAviso = document.getElementById("mensaje");
@@ -157,6 +161,13 @@ function agregarAlCarrito(productId) {
             productoExistente.cantidad++;
             mostrarCarrito();
             actualizarNumeroCarrito();
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: ` ${producto.nombre} se añadio al carrito`,
+                showConfirmButton: false,
+                timer: 1000
+              });
         } else {
             mostrarMensaje("No hay suficiente stock disponible para este producto.");
         }
@@ -166,6 +177,13 @@ function agregarAlCarrito(productId) {
             mostrarCarrito();
             actualizarNumeroCarrito();
             guardarLocalS();
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: ` ${producto.nombre} se añadio al carrito`,
+                showConfirmButton: false,
+                timer: 1000
+              });
         } else {
             mostrarMensaje("Este producto está agotado.");
         }
@@ -181,6 +199,7 @@ function cambiarCantidad(productId, nuevaCantidad) {
         mostrarCarrito();
         actualizarNumeroCarrito();
         guardarLocalS();
+        
     } else {
         mostrarMensaje("La cantidad ingresada no es válida.");
     }
@@ -199,7 +218,14 @@ function comprar() {
     const totalPagar = calcularTotal();
     if (totalPagar > 0) {
         vaciarCarrito();
-        mostrarMensaje(`Compra realizada con éxito. Total pagado: $${totalPagar}. Gracias por su compra.`);
+        
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: `Compra realizada con éxito. Total pagado: $${totalPagar}. Gracias por su compra.`,
+            showConfirmButton: false,
+            timer: 2000
+          });
     } else {
         mostrarMensaje("Agrega algo a tu carrito para realizar la compra")
     }
@@ -221,7 +247,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 function eliminarProducto(productId) {
-    carrito = carrito.filter(item => item.id !== productId);    
+    carrito = carrito.filter(item => item.id !== productId);
     mostrarCarrito();
     actualizarNumeroCarrito();
     guardarLocalS();
@@ -234,6 +260,7 @@ function eliminarProducto(productId) {
 function guardarLocalS() {
     localStorage.setItem("carrito", JSON.stringify(carrito));
 }
+
 function cargarCarritoDesdeLS() {
     const carritoLocalStorage = localStorage.getItem("carrito");
     if (carritoLocalStorage) {

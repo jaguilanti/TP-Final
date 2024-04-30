@@ -15,38 +15,39 @@
                 <h1>Sorella</h1>
                 <nav>
                     <ul>
-                        <li><a id="Inicio" class="boton-categoria"  href="#">Inicio</a></li>
-                        <li><a id="Indumentaria" class="boton-categoria"  href="#">Indumentaria</a></li>
-                        <li><a id="Calzado" class="boton-categoria"  href="#">Calzado</a></li>
-                        <li><a id="Accesorios" class="boton-categoria"  href="#">Accesorios</a></li>
-                        <li><a href="#" id="carrito-link">Carrito<span id="numero-carrito">0</span></a></li>
+                        <li><a id="Inicio" class="boton-categoria" href="#">Inicio</a></li>
+                        <li><a id="Indumentaria" class="boton-categoria" href="#">Indumentaria</a></li>
+                        <li><a id="Calzado" class="boton-categoria" href="#">Calzado</a></li>
+                        <li><a id="Accesorios" class="boton-categoria" href="#">Accesorios</a></li>
+                        <li><a href="carrito.html" id="carrito-link">Carrito<span id="numero-carrito">0</span></a></li>
                     </ul>
-                    
+
                 </nav>
-            
+
             </div>
-        
+
         </header>
         <h2 class="titulo-principal" id="titulo-principal">Todos los productos</h2>
-        <main id="productos" class="grid-container">            
+        <main id="productos" class="grid-container">
             <!-- Aquí se mostrarán los productos -->
         </main>
-    
+
         <div id="carrito" class="hidden">
-             <button id="cerrar-carrito">Cerrar</button>
-             <h2>Carrito de Compras</h2>
-             <ul id="carrito-lista"></ul>
-             <p>Total a pagar: $<span id="total-pagar">0.00</span></p>
-             <button id="vaciar-carrito">Vaciar Carrito</button>
-             <button id="comprar">Comprar</button>
-         </div> 
-     
-        <div id="mensaje" class="mensaje hidden"></div>
-     
+            <button id="cerrar-carrito">Cerrar</button>
+            <h2>Carrito de Compras</h2>
+            <ul id="carrito-lista"></ul>
+            <p>Total a pagar: $<span id="total-pagar">0.00</span></p>
+            <button id="vaciar-carrito">Vaciar Carrito</button>
+            <button id="comprar">Comprar</button> 
+        </div>
+
+        <div id="mensaje" class="mensaje hidden"></div> 
+
         <footer>
             <p>&copy; 2024 SORELLA</p>
         </footer>
-    
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="main.js"></script>
     </body>
 

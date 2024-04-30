@@ -13,25 +13,32 @@
 
         <nav>
             <a href="index.html">Inicio</a>
-            <a>Carrito <span id="cart-count">0</span></a>
+            <a>Carrito <span id="numero-carrito">0</span></a>
         </nav>
 
         <h1>Carrito de Compras</h1>
 
-        <h2>Carrito Vacio</h2>
-        <ul id="carrito-lista"></ul>
-        <div id="carrito-productos" class="carrito-productos disabled">
-            <!-- Aquí se mostrarán los productos en el carrito -->
+        
+        
+        <div id="" class="">
+            <h2 class="hidden-titulo">Carrito Vacio</h2>
+            <ul id="carrito-lista"></ul>
+            <p>Total a pagar: $<span id="total-pagar">0.00</span></p>
+            <button id="vaciar-carrito">Vaciar Carrito</button>
+            <button id="comprar">Comprar</button>
         </div>
-        <p>Total a pagar: $<span id="total-pagar">0.00</span></p>
-        <button id="vaciar-carrito">Vaciar Carrito</button>
-        <button id="comprar">Comprar</button>
 
 
         <div id="mensaje" class="mensaje hidden"></div>
 
+        <footer>
+            <p>&copy; 2024 SORELLA</p>
+        </footer>
 
-        <script src="./main.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="main.js"></script>
+        <script src="carrito.js"></script>
+        
     </body>
 
 </html>

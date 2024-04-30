@@ -142,8 +142,15 @@ footer {
     width: 30rem;
 }
 .carrito-header{
-    display: flex;    
+    display: flex;   
+    width: 100%;
     justify-content: space-around;    
+}
+#carrito-lista{
+    display: flex;  
+    flex-direction: column; 
+    width: 100%; 
+    text-align: center; 
 }
 #carrito-lista li {
     margin-bottom: 10px; 
