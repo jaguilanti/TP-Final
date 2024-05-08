@@ -1,0 +1,66 @@
+[
+    {
+        "id": 1,
+        "nombre": "Camiseta",
+        "categoria": "Indumentaria",
+        "precio": 20,
+        "stock": 10,
+        "imagen": "./imagenes/outfits/7 ideas de outfits perfectos para ir a la playa en Semana Santa.png"
+    },
+    {
+        "id": 2,
+        "nombre": "Pantalón",
+        "categoria": "Indumentaria",
+        "precio": 30,
+        "stock": 5,
+        "imagen": "./imagenes/outfits/des.jpg"
+    },
+    {
+        "id": 3,
+        "nombre": "Zapatos",
+        "categoria": "Calzado",
+        "precio": 50,
+        "stock": 8,
+        "imagen": "./imagenes/zapatos/zapatos.png"
+    },
+    {
+        "id": 4,
+        "nombre": "Aros",
+        "categoria": "Accesorios",
+        "precio": 25,
+        "stock": 15,
+        "imagen": "./imagenes/accesorios.png"
+    },
+    {
+        "id": 5,
+        "nombre": "Camiseta",
+        "categoria": "Indumentaria",
+        "precio": 20,
+        "stock": 10,
+        "imagen": "./imagenes/outfits/7 ideas de outfits perfectos para ir a la playa en Semana Santa.png"
+    },
+    {
+        "id": 6,
+        "nombre": "Pantalón",
+        "categoria": "Indumentaria",
+        "precio": 30,
+        "stock": 5,
+        "imagen": "./imagenes/outfits/des.jpg"
+    },
+    {
+        "id": 7,
+        "nombre": "Zapatos",
+        "categoria": "Calzado",
+        "precio": 50,
+        "stock": 8,
+        "imagen": "./imagenes/zapatos/zapatos.png"
+    },
+    {
+        "id": 8,
+        "nombre": "Aros",
+        "categoria": "Accesorios",
+        "precio": 25,
+        "stock": 0,
+        "imagen": "./imagenes/accesorios.png"
+    }
+]
