@@ -11,18 +11,20 @@
 
 <body>
 
-    <nav>
-        <a href="index.html">Inicio</a>
-        <a href="#">Carrito <span id="numero-carrito">0</span></a>
+    <nav class="nav-carrito">
+        <a href="index.html" class="carrito-menu inicio-carrito">Inicio</a>
+        <a class="carrito-menu">Carrito <span id="numero-carrito">0</span></a>
     </nav>
 
-    <h1>Carrito de Compras</h1>        
-    
-    <div>            
+    <h1 class="titulo-carrito">Carrito de Compras</h1>
+
+    <div class="contenido-carrito">
         <ul id="carrito-lista"></ul>
-        <p>Total a pagar: $<span id="total-pagar">0.00</span></p>
-        <button id="vaciar-carrito">Vaciar Carrito</button>
-        <button id="comprar">Comprar</button>
+        <p id="total">Total a pagar: $<span id="total-pagar">0.00</span></p>
+        <div class="botones">
+            <button id="vaciar-carrito">Vaciar Carrito</button>
+            <button id="comprar">Comprar</button>
+        </div>
     </div>
 
 
@@ -35,7 +37,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="main.js"></script>
     <script src="carrito.js"></script>
-    
+
 </body>
 
 </html>

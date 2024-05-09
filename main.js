@@ -1,34 +1,32 @@
-let productos = []; 
-
 document.addEventListener("DOMContentLoaded", () => {
-    fetch('./productos.json')
-        .then(response => response.json())
-        .then(datos => {
-            productos = datos; // obtengo y guardo los datos en la variable let productos
-            cargarCarritoDesdeLS(); 
-            mostrarProductos();            
-            actualizarNumeroCarrito();
-            const categorias = document.querySelectorAll(".boton-categoria");
-            categorias.forEach(categoria => {
-                categoria.addEventListener("click", (event) => {
-                    event.preventDefault();
-                    const categoriaSeleccionada = event.target.id;
-                    filtrarProductos(categoriaSeleccionada);
+    // Estando solo en el index.html se ejecutaran las funciones que contiene, para no tener errores en carrito.html!!!
+    if (window.location.pathname.includes("index.html")) {
+        fetch('./productos.json')
+            .then(response => response.json())
+            .then(datos => {
+                productos = datos; // obtiene y guarda los datos en la variable
+                cargarCarritoDesdeLS(); 
+                mostrarProductos();            
+                actualizarNumeroCarrito();
+                const categorias = document.querySelectorAll(".boton-categoria");
+                categorias.forEach(categoria => {
+                    categoria.addEventListener("click", (event) => {
+                        event.preventDefault();
+                        const categoriaSeleccionada = event.target.id;
+                        filtrarProductos(categoriaSeleccionada);
+                    });
                 });
+            })
+            .catch(error => {
+                console.error('Error al cargar los productos:', error);
             });
-        })
-        .catch(error => {
-            console.error('Error al cargar los productos:', error);
-        });
+    }
 });
 
+//VARIABLES
 let carrito = [];
+let productos = [];
 
-function actualizarNumeroCarrito() {
-    const numeroCarritoElement = document.getElementById("numero-carrito");
-    const cantidadProductosEnCarrito = carrito.reduce((total, item) => total + item.cantidad, 0);
-    numeroCarritoElement.textContent = cantidadProductosEnCarrito;
-}
 function mostrarProductos() {
     const main = document.getElementById("productos");
     main.innerHTML = "";
@@ -85,8 +83,6 @@ function agregarAlCarrito(productId) {
     }
 }
 
-
-
 function calcularTotal() {
     let total = 0;
     for (const item of carrito) {
@@ -97,22 +93,6 @@ function calcularTotal() {
     }
     return total.toFixed(2);
 }
-
-
-
-
-document.addEventListener("DOMContentLoaded", () => {
-    mostrarProductos();      
-    actualizarNumeroCarrito()
-    const categorias = document.querySelectorAll(".boton-categoria");
-    categorias.forEach(categoria => {
-        categoria.addEventListener("click", (event) => {
-            event.preventDefault();
-            const categoriaSeleccionada = event.target.id;
-            filtrarProductos(categoriaSeleccionada);
-        });
-    });
-});
 
 function filtrarProductos(categoria) {
     const main = document.getElementById("productos");
@@ -144,7 +124,6 @@ function filtrarProductos(categoria) {
     }
 }
 
-
 function mostrarMensaje(mensaje) {
     const mensajeDeAviso = document.getElementById("mensaje");
     mensajeDeAviso.textContent = mensaje;
@@ -154,33 +133,11 @@ function mostrarMensaje(mensaje) {
     }, 3000); // Oculta el mensaje después de 3s
 }
 
-function cambiarCantidad(productId, nuevaCantidad) {
-    const productoExistente = carrito.find(item => item.id === productId);
-    const producto = productos.find(item => item.id === productId);
-    if (productoExistente && nuevaCantidad > 0 && nuevaCantidad <= producto.stock) {
-        productoExistente.cantidad = parseInt(nuevaCantidad);
-        mostrarCarrito();
-        actualizarNumeroCarrito();
-        guardarLocalS();
-        calcularTotal();
-    } else {
-        mostrarMensaje("La cantidad ingresada no es válida.");
-    }
+function actualizarNumeroCarrito() {
+    const numeroCarritoElement = document.getElementById("numero-carrito");
+    const cantidadProductosEnCarrito = carrito.reduce((total, item) => total + item.cantidad, 0);
+    numeroCarritoElement.textContent = cantidadProductosEnCarrito;
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-    cargarCarritoDesdeLS();
-    mostrarProductos();     
-    actualizarNumeroCarrito()
-    const categorias = document.querySelectorAll(".boton-categoria");
-    categorias.forEach(categoria => {
-        categoria.addEventListener("click", (event) => {
-            event.preventDefault();
-            const categoriaSeleccionada = event.target.id;
-            filtrarProductos(categoriaSeleccionada);
-        });
-    });
-});
 
 // LOCAL STORAGE
 function guardarLocalS() {
@@ -191,6 +148,5 @@ function cargarCarritoDesdeLS() {
     const carritoLocalStorage = localStorage.getItem("carrito");
     if (carritoLocalStorage) {
         carrito = JSON.parse(carritoLocalStorage);
-        
     }
 }
